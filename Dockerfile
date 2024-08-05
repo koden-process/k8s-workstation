@@ -12,20 +12,14 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     apt-get update && \
     apt-get install -y docker-ce docker-ce-cli containerd.io
 
-# Ajouter un utilisateur avec sudo sans mot de passe
-RUN useradd -m -d /home/dockeruser -s /bin/bash dockeruser && \
-    echo "dockeruser:dockeruser" | chpasswd && \
-    usermod -aG sudo dockeruser && \
-    echo "dockeruser ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-
 # Configurer SSH pour permettre la connexion par clé
-RUN mkdir /home/dockeruser/.ssh && \
-    chmod 700 /home/dockeruser/.ssh
+RUN mkdir /home/ubnutu/.ssh && \
+    chmod 700 /home/ubuntu/.ssh
 
 # Copie des clés SSH depuis un fichier externe
-COPY authorized_keys /home/dockeruser/.ssh/authorized_keys
-RUN chmod 600 /home/dockeruser/.ssh/authorized_keys && \
-    chown -R dockeruser:dockeruser /home/dockeruser/.ssh
+COPY authorized_keys /home/ubuntu/.ssh/authorized_keys
+RUN chmod 600 /home/ubuntu/.ssh/authorized_keys && \
+    chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 
 # Exposer le port SSH
 EXPOSE 22
