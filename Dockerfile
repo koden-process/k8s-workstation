@@ -3,7 +3,7 @@ FROM ubuntu:latest
 
 # Mettre à jour les paquets et installer les outils nécessaires
 RUN apt-get update && \
-    apt-get install -y openssh-server iputils-ping net-tools curl wget vim tree sudo gnupg2 software-properties-common rsync && \
+    apt-get install -y openssh-server iputils-ping net-tools curl wget vim tree sudo gnupg2 software-properties-common rsync cron && \
     mkdir /var/run/sshd
 
 # Installer Docker
