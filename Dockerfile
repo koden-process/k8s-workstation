@@ -13,7 +13,7 @@ RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add - && \
     apt-get install -y docker-ce docker-ce-cli containerd.io
 
 # Configurer SSH pour permettre la connexion par clé
-RUN mkdir /home/ubnutu/.ssh && \
+RUN mkdir /home/ubuntu/.ssh && \
     chmod 700 /home/ubuntu/.ssh
 
 # Copie des clés SSH depuis un fichier externe
