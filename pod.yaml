@@ -10,4 +10,11 @@ spec:
     ports:
     - containerPort: 22
       name: ssh
+    volumeMounts:
+    - mountPath: /mnt/save-apache01
+      name: ubuntu-storage
+  volumes:
+  - name: ubuntu-storage
+    persistentVolumeClaim:
+      claimName: pv-save-apache01
   restartPolicy: Always
