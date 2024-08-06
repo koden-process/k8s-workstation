@@ -6,15 +6,23 @@ spec:
   containers:
   - name: ubuntu-container
     image: killiankopp/k8s-pod-workstation:latest
-    command: ["/bin/bash", "-c", "while true; do sleep 1000; done"]
+    command: ["/bin/bash", "-c", "mkdir -p /root/.ssh && cp /tmp/ssh/id_rsa /root/.ssh/id_rsa && chmod 400 /root/.ssh/id_rsa && while true; do sleep 1000; done"]
     ports:
     - containerPort: 22
       name: ssh
     volumeMounts:
     - mountPath: /mnt/save-apache01
       name: ubuntu-storage
+    - mountPath: /tmp/ssh
+      name: ssh-key-volume
   volumes:
   - name: ubuntu-storage
     persistentVolumeClaim:
       claimName: pv-save-apache01
+  - name: ssh-key-volume
+    secret:
+      secretName: ssh-key-secret
+      items:
+      - key: ssh-privatekey
+        path: id_rsa
   restartPolicy: Always

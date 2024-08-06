@@ -15,6 +15,12 @@ COPY authorized_keys /home/ubuntu/.ssh/authorized_keys
 RUN chmod 600 /home/ubuntu/.ssh/authorized_keys && \
     chown -R ubuntu:ubuntu /home/ubuntu/.ssh
 
+# copie de known_hosts
+COPY known_hosts /root/.ssh/known_hosts
+COPY known_hosts /home/ubuntu/.ssh/known_hosts
+RUN chmod 600 /home/ubuntu/.ssh/known_hosts && \
+    chown -R ubuntu:ubuntu /home/ubuntu/.ssh
+
 # Exposer le port SSH
 EXPOSE 22
 
