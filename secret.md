@@ -15,7 +15,7 @@ data:
 Pour encoder votre clé SSH privée en base64, vous pouvez utiliser la commande suivante :
 
 ```sh
-cat /chemin/vers/votre/clé/privée | base64 -w 0
+cat /chemin/vers/votre/clé/privée c
 ```
 
 Remplacez `<clé_privée_base64>` par le résultat de cette commande. Ensuite, vous pouvez créer le Secret dans votre cluster Kubernetes avec la commande suivante :
