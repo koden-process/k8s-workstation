@@ -11,7 +11,7 @@ spec:
           containers:
           - name: backup-container
             image: killiankopp/k8s-pod-workstation:latest
-            command: ["/bin/bash", "-c", "mkdir -p /root/.ssh && cp /tmp/ssh/id_rsa /root/.ssh/id_rsa && cp /tmp/ssh/id_rsa.pub /root/.ssh/id_rsa.pub && cp /tmp/ssh/known_hosts /root/.ssh/known_hosts && chmod 400 /root/.ssh/id_rsa && chmod 400 /root/.ssh/id_rsa.pub && chmod 400 /root/.ssh/known_hosts && /mnt/s/mnt/save-apache01/save.sh"]
+            command: ["/bin/bash", "-c", "mkdir -p /root/.ssh && cp /tmp/ssh/id_rsa /root/.ssh/id_rsa && cp /tmp/ssh/id_rsa.pub /root/.ssh/id_rsa.pub && cp /tmp/ssh/known_hosts /root/.ssh/known_hosts && chmod 400 /root/.ssh/id_rsa && chmod 400 /root/.ssh/id_rsa.pub && chmod 400 /root/.ssh/known_hosts && /mnt/save-apache01/save.sh"]
             volumeMounts:
             - mountPath: /mnt/save-apache01
               name: ubuntu-storage
